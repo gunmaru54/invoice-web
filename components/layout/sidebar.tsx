@@ -9,6 +9,7 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { LogoutButton } from "@/components/layout/LogoutButton"
 
 export interface SidebarNavItem {
   title: string
@@ -66,9 +67,10 @@ export function Sidebar() {
         })}
       </nav>
 
-      {/* 테마 전환 */}
-      <div className="border-t p-3">
+      {/* 테마 전환 + 로그아웃 */}
+      <div className="border-t p-3 flex flex-col gap-1">
         <ThemeToggle />
+        <LogoutButton />
       </div>
     </aside>
   )

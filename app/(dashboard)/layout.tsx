@@ -3,13 +3,16 @@ import { MobileSidebar } from "@/components/layout/mobile-sidebar"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { FileTextIcon } from "lucide-react"
 import Link from "next/link"
+import { requireAuth } from "@/lib/auth/requireAuth"
 
 // 어드민 대시보드 공통 레이아웃 (사이드바 + 메인 콘텐츠)
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  // 미인증 사용자는 /login으로 리다이렉트 (미들웨어에 대한 이중 방어)
+  const _session = await requireAuth()
   return (
     <div className="flex h-screen overflow-hidden">
       {/* 접근성: 키보드 사용자가 반복 내비게이션을 건너뛸 수 있도록 Skip Navigation 링크 제공 */}

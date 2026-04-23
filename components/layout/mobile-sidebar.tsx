@@ -14,6 +14,8 @@ import {
 } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
 import { sidebarItems } from "@/components/layout/sidebar"
+import { ThemeToggle } from "@/components/ui/theme-toggle"
+import { LogoutButton } from "@/components/layout/LogoutButton"
 
 // 모바일 전용 사이드바 드로어 컴포넌트
 export function MobileSidebar() {
@@ -44,7 +46,7 @@ export function MobileSidebar() {
         </SheetHeader>
 
         {/* 네비게이션 링크 */}
-        <nav className="flex flex-col gap-1 p-3">
+        <nav className="flex flex-col gap-1 p-3 flex-1">
           {sidebarItems.map((item) => {
             // /invoices 경로는 하위 경로에서도 활성 표시
             const isActive =
@@ -71,6 +73,12 @@ export function MobileSidebar() {
             )
           })}
         </nav>
+
+        {/* 테마 전환 + 로그아웃 */}
+        <div className="border-t p-3 flex flex-col gap-1">
+          <ThemeToggle />
+          <LogoutButton />
+        </div>
       </SheetContent>
     </Sheet>
   )
