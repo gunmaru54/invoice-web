@@ -1,5 +1,9 @@
 "use client"
 
+// 다크모드 영향 없음 — @react-pdf/renderer는 DOM CSS 변수를 사용하지 않아
+// 항상 라이트 팔레트로 고정됨. 색상값(#ffffff 등)은 의도적인 PDF 전용 고정값이며
+// semantic token으로 치환하지 않습니다. (ADR-005 참고)
+
 import {
   Document,
   Font,

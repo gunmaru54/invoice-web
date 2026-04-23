@@ -10,6 +10,7 @@ import { getInvoiceBySlug } from "@/lib/notion"
 import { formatKRW } from "@/lib/format"
 import { InvoiceViewer } from "@/components/invoice/InvoiceViewer"
 import { DownloadPdfButtonWrapper } from "@/components/invoice/DownloadPdfButtonWrapper"
+import { ViewerThemeToggle } from "@/components/invoice/ViewerThemeToggle"
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -59,8 +60,9 @@ export default async function QuoteViewerPage({ params }: PageProps) {
           <span>견적서</span>
         </div>
 
-        {/* PDF 다운로드 버튼 — 인쇄 시 숨김 */}
-        <div className="mb-4 flex justify-end print-hidden">
+        {/* PDF 다운로드 버튼 + 테마 전환 — 인쇄 시 숨김 */}
+        <div className="mb-4 flex items-center justify-end gap-2 print-hidden">
+          <ViewerThemeToggle />
           <DownloadPdfButtonWrapper invoice={invoice} />
         </div>
 
